@@ -1,0 +1,2 @@
+# Webpack
+Multibundle webpack configuration
