@@ -11,10 +11,10 @@ const config = {
 	devtool: 'source-map',
 	watch: true,
 	entry : {
-		vendor: './src/js/vendor.js'
+		vendor: ['./src/js/vendor.js','./src/sass/master.scss']
 	},
 	output: {
-		filename: '[name]',
+		filename: '[name].js',
     	path: path.resolve(`${__dirname}/build`, 'js'),
     	publicPath:  path.resolve(`${__dirname}/build`, 'js')
 	},
@@ -50,31 +50,17 @@ const config = {
 		]
 	},
 	plugins: [
-		// new webpack.DefinePlugin({
-  //     		'process.env': {
-		// 		'NODE_ENV': JSON.stringify('production')
-		// 	}
-		// }),
-		new webpack.ProvidePlugin({
-      		React: 'react',
-      		ReactDom: 'react-dom',
-      		moment: 'moment'
-		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 		new ExtractTextPlugin({
 			filename: '../css/master.css',
 			allChunks: false,
-    	}),
-    	new webpack.optimize.CommonsChunkPlugin({
-    		name: 'vendor',
-    		filename: 'vendor.js'
     	})
 	]
 };
 
 if (views.length) {
 	for (var i = 0; i < views.length; i++) {
-		config.entry[views[i].replace('./src/js/','./')] = views[i];
+		config.entry[views[i].replace('./src/js/','./').replace('.js','')] = views[i];
 	}
 }
 

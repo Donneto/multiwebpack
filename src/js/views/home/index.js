@@ -1,5 +1,3 @@
-console.log(moment());
-
 class App extends React.Component {
 
   render() {
@@ -7,6 +5,7 @@ class App extends React.Component {
     return(
       <div>
         <h1>React is in da housa!</h1>
+        asldjkasdlkj
       </div>
     );
   }
